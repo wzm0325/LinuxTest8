@@ -19,7 +19,7 @@ game_start=(
     '                                                 '
     '                ~~~ S N A K E ~~~                '
     '                                                 '
-    '                  Author:  ZBY                   '
+    '                  Author:  WZM                   '
     '         space or enter   pause/play             '
     '         q                quit at any time       '
     '         s                change the speed       '
@@ -102,10 +102,10 @@ ch_speed() {                                  #更新速度
 
 Gooooo() {                                   #更新方向
     case ${key:-enter} in
-        j|J) [[ ${pos[0]} != "up"    ]] && pos[0]="down";;
-        k|K) [[ ${pos[0]} != "down"  ]] && pos[0]="up";;
-        h|H) [[ ${pos[0]} != "right" ]] && pos[0]="left";;
-        l|L) [[ ${pos[0]} != "left"  ]] && pos[0]="right";;
+        S|J) [[ ${pos[0]} != "up"    ]] && pos[0]="down";;
+        W|K) [[ ${pos[0]} != "down"  ]] && pos[0]="up";;
+        A|H) [[ ${pos[0]} != "right" ]] && pos[0]="left";;
+        D|L) [[ ${pos[0]} != "left"  ]] && pos[0]="right";;
         s|S) ch_speed;;
         q|Q) snake_exit;;
       enter) game_pause;;
@@ -142,7 +142,7 @@ mk_random_origin() {                               #产生随机点和随机数
 mk_random() {                               #产生随机点和随机数
     xrand=$((RANDOM%(Lines-3)+2));
     yrand=$((RANDOM%(Cols-2)+2));
-    foodscore=$((RANDOM%9+1));
+    foodscore=$((RANDOM%100+1));
 
     echo -ne "\033[$xrand;${yrand}H$foodscore";
     liveflag=0;
